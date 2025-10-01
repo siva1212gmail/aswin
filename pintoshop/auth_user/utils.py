@@ -9,7 +9,7 @@ def generate_otp():
 
 def send_sms_via_twilio(to_number, otp_code):
     account_sid = 'AC7eeefd0122473cc995d24ff86a5fe6a5'
-    auth_token = "5b280d8c04ab681b63a7e4a3d4c61330"
+    auth_token = "cf730b95663087cb20a2e7fa6d77b6f3"
     verify_sid = "VAcf0310873fc863a31683281836c49baf"  # e.g. VAcf0310...
 
     client = Client(account_sid, auth_token)
