@@ -31,11 +31,11 @@ class SendOTPView(APIView):
                 dte_Sent_Time=timezone.now()
             )
 
-        # Assume if it's a phone number (basic check)
+
             if contact_value.startswith("+") and contact_value[1:].isdigit():
                 send_sms_via_twilio(contact_value, otp_code)
             else:
-            # Optional: email sending logic if needed
+          
                 pass
 
             return Response({"status":True,"message":"otp send succesfully","response" : {}})
@@ -75,7 +75,7 @@ class VerifyOTPView(APIView):
         otp_code = request.data.get('otp_code')
         account_sid = 'AC7eeefd0122473cc995d24ff86a5fe6a5'
         auth_token = "cf730b95663087cb20a2e7fa6d77b6f3"
-        verify_sid = "VAcf0310873fc863a31683281836c49baf"  # e.g. VAcf0310...
+        verify_sid = "VAcf0310873fc863a31683281836c49baf" 
 
         client = Client(account_sid, auth_token)
 
