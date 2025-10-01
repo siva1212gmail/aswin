@@ -34,17 +34,15 @@ class SendOTPView(APIView):
         # Assume if it's a phone number (basic check)
             if contact_value.startswith("+") and contact_value[1:].isdigit():
                 send_sms_via_twilio(contact_value, otp_code)
-                print("1")
             else:
-                print("2")
             # Optional: email sending logic if needed
                 pass
 
-            return Response({"lng_OTP_ID": otp_obj.lng_OTP_ID}, status=status.HTTP_201_CREATED)
+            return Response({"status":True,"message":"otp send succesfully","response" : {}})
         except Exception as e:
 
             return Response(
-                {"status": False, "message": f"Unable to send OTP {e}"},
+                {{"status":True,"message":"otp send succesfully","response" : {e}}},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
@@ -90,8 +88,8 @@ class VerifyOTPView(APIView):
             print("Verification status:", verification_check.status)
 
             if verification_check.status == 'approved':
-                return Response({"verified": True})
+                return Response({"status":True,"message":"otp verified succesfully","response" : {}})
             else:
-                return Response({"verified": False, "error": "Invalid OTP"}, status=400)
+                return Response({"status":False,"message":"invaid otp","response" : {}})
         except Exception as e:
-            return Response({"verified": False, "error": str(e)}, status=500)
+            return Response({"status":False,"message":"something went wrong","response" : {e}})

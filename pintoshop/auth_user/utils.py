@@ -19,7 +19,6 @@ def send_sms_via_twilio(to_number, otp_code):
             to='+916383560813',
             channel='sms'
         )
-        print(f"Verification status: {verification.status}")
     except Exception as e:
         print(e)
         return Response({"message":e})
