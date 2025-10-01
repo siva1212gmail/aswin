@@ -38,7 +38,7 @@ class SendOTPView(APIView):
           
                 pass
 
-            return Response({"status":True,"message":"otp send succesfully","response" : {"otp":otp_code}})
+            return Response({"status":True,"message":"otp send succesfully","response" : {"otp":otp_code,"lng_OTP_ID":otp_obj.lng_OTP_ID }})
         except Exception as e:
 
             return Response(
